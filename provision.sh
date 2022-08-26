@@ -57,10 +57,13 @@ sudo apt -y purge thunderbird
 # Install Additional Repositories
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge.list'
 rm microsoft.gpg
 
-wget -qO- http://repo.vivaldi.com/stable/linux_signing_key.pub | sudo apt-key add -
-sudo add-apt-repository "deb [arch=i386,amd64] http://repo.vivaldi.com/stable/deb/ stable main"
+curl https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dearmor > vscodium.gpg
+sudo install -o root -g root -m 644 vscodium.gpg /etc/apt/trusted.gpg.d/
+sudo sh -c 'echo "deb [arch=amd64] https://download.vscodium.com/debs vscodium main" > /etc/apt/sources.list.d/vscodium.list'
+rm vscodium.gpg
 
 # Update the System
 sudo apt update 
@@ -93,7 +96,7 @@ sudo apt -y install neofetch
 sudo apt -y install imagemagick 
 sudo apt -y install nautilus-image-converter
 sudo apt -y install gnome-tweaks 
-sudo apt -y install vivaldi-stable
+sudo apt -y install microsoft-edge-stable
 
 # Install Python Packages
 pip3 install quantumdiceware
