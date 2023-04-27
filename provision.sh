@@ -55,15 +55,26 @@ sudo apt -y purge aisleriot
 sudo apt -y purge thunderbird
 
 # Install Additional Repositories
+## Microsoft Edge
 curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
 sudo install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/
 sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge.list'
 rm microsoft.gpg
 
+## Microsoft Debian Bulls Eye
+curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-debian-bullseye-prod bullseye main" > /etc/apt/sources.list.d/microsoft.list'
+
+## VS Codium
 curl https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg | gpg --dearmor > vscodium.gpg
 sudo install -o root -g root -m 644 vscodium.gpg /etc/apt/trusted.gpg.d/
 sudo sh -c 'echo "deb [arch=amd64] https://download.vscodium.com/debs vscodium main" > /etc/apt/sources.list.d/vscodium.list'
-rm vscodium.gpg
+rm -f vscodium.gpg
+
+## OneDriver
+echo 'deb http://download.opensuse.org/repositories/home:/jstaf/xUbuntu_22.04/ /' | sudo tee /etc/apt/sources.list.d/home:jstaf.list
+curl -fsSL https://download.opensuse.org/repositories/home:jstaf/xUbuntu_22.04/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/home_jstaf.gpg > /dev/null
+
 
 # Update the System
 sudo apt update 
@@ -72,39 +83,46 @@ sudo apt -y autoremove
 
 # Install Snap Packages
 sudo snap install codium
-sudo snap install zotero-snap
-sudo snap install keypassxc
 sudo snap install foliate
 sudo snap install multipass
 
 # Install Apt Packages
 sudo apt -y install cabextract
 sudo apt -y install net-tools
+sudo apt -y install tmux
 sudo apt -y install htop 
 sudo apt -y install ncdu
 sudo apt -y install git 
+sudo apt -y install gnupg
 sudo apt -y install barrier
-sudo apt -y install gnome-weather
+sudo apt -y install curtail
+#sudo apt -y install gnome-weather
 sudo apt -y install python3-pip 
 sudo apt -y install twine 
 sudo apt -y install nmap
+sudo apt -y install remmina
 sudo apt -y install inetutils-traceroute
 sudo apt -y install traceroute
 sudo apt -y install torbrowser-launcher
 sudo apt -y install cmatrix 
 sudo apt -y install neofetch
 sudo apt -y install imagemagick 
-sudo apt -y install nautilus-image-converter
-sudo apt -y install gnome-tweaks 
+#sudo apt -y install nautilus-image-converter
+#sudo apt -y install gnome-tweaks 
 sudo apt -y install microsoft-edge-stable
+sudo apt -y install powershell
+sudo apt -y install onedriver
 
 # Install Python Packages
 pip3 install quantumdiceware
+#pip3 install pyoath
 
 # Install Codium Extensions
 sudo -u $SUDO_USER codium - --install-extension sleistner.vscode-fileutils
 sudo -u $SUDO_USER codium - --install-extension streetsidesoftware.code-spell-checker
 sudo -u $SUDO_USER codium - --install-extension ms-python.python
+sudo -u $SUDO_USER codium - --install-extension janisdd.vscode-edit-csv
+sudo -u $SUDO_USER codium - --install-extension ms-vscode.powershell
 
 # Install Microsoft Fonts
 sudo -u $SUDO_USER mkdir /home/$SUDO_USER/.fonts 
