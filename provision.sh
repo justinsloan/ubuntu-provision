@@ -75,6 +75,7 @@ sudo apt -y install net-tools
 sudo apt -y install tmux
 sudo apt -y install htop 
 sudo apt -y install ncdu
+sudo apt -y install sc
 sudo apt -y install git 
 sudo apt -y install gnupg
 sudo apt -y install barrier
@@ -166,6 +167,7 @@ echo "alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0'" >>
 echo "alias dict='dict -d wn'" >> /home/$SUDO_USER/.bash_aliases
 echo "alias gpumon='amd-smi monitor -g 0 -p -u -t'" >> /home/$SUDO_USER/.bash_aliases
 echo "alias cat='batcat'" >> /home/$SUDO_USER/.bash_aliases
+echo "alias sheet='sc'" >> /home/$SUDO_USER/.bash_aliases
 
 # Reload the .bashrc file
 source /home/$SUDO_USER/.bashrc
