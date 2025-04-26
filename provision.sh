@@ -83,6 +83,7 @@ sudo apt -y install curtail
 sudo apt -y install termius-app
 sudo apt -y install bind9-dnsutils
 sudo apt -y install gnome-sushi
+sudo apt -y install gnome-tweaks
 #sudo apt -y install gnome-weather
 sudo apt -y install python3-pip 
 sudo apt -y install twine 
