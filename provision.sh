@@ -133,6 +133,9 @@ wget http://ftp.de.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefont
 sudo apt -y install ~/Downloads/ttf-mscorefonts-installer_3.6_all.deb
 rm ~/Downloads/ttf-mscorefonts-installer_3.6_all.deb
 
+# Set permissions for Flameshot
+flatpak permission-set screenshot screenshot org.flameshot.Flameshot yes
+
 # Config Git
 git config --global user.name  $SUDO_USER
 git config --global user.email "my@private.email"
