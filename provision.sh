@@ -68,6 +68,7 @@ sudo apt -y autoremove
 
 # Install Snap Packages
 sudo snap install multipass
+sudo snap install wormhole
 
 # Install Apt Packages
 sudo apt -y install cabextract
@@ -111,19 +112,21 @@ sudo apt -y install rclone
 sudo apt -y install docker.io
 sudo apt -y install docker-compose
 sudo apt -y install sshfs
+sudo apt -y install lazygit
 
 # Install Python Packages
-#pip3 install pyoath
+sudo apt -y install python3-venv
 
 # Install the Micro editor
 curl https://getmic.ro | sh
 sudo mv micro /usr/bin
+micro -plugin install filemanager fzf wc editorconfig runit cheat detectindent manipulator aspell jump
 
 # Install Ollama
 curl -fsSL https://ollama.com/install.sh | sh
 ollama pull nomic-embed-text
 ollama pull gemma3:1b
-#echo 'Environment="HSA_OVERRIDE_GFX_VERSION=11.0.0"' | sudo tee /etc/systemd/system/ollama.service.d/override.conf
+echo 'Environment="HSA_OVERRIDE_GFX_VERSION=11.0.0"' | sudo tee /etc/systemd/system/ollama.service.d/override.conf
 sudo systemctl daemon-reload
 
 # Install Microsoft Fonts
@@ -172,6 +175,9 @@ echo "alias dict='dict -d wn'" >> /home/$SUDO_USER/.bash_aliases
 echo "alias gpumon='amd-smi monitor -g 0 -p -u -t'" >> /home/$SUDO_USER/.bash_aliases
 echo "alias cat='batcat'" >> /home/$SUDO_USER/.bash_aliases
 echo "alias sheet='sc'" >> /home/$SUDO_USER/.bash_aliases
+echo "alias ta='tmux attach -t'" >> /home/$SUDO_USER/.bash_aliases
+echo "alias wr='wormhole receive'" >> /home/$SUDO_USER/.bash_aliases
+echo "alias ws='wormhole send'" >> /home/$SUDO_USER/.bash_aliases
 
 # Reload the .bashrc file
 source /home/$SUDO_USER/.bashrc
